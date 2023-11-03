@@ -4,7 +4,7 @@ const mysql = require('mysql')
 const cors=require("cors")
 app.use(express.json());
 app.use(cors())
-const PORT=4000
+const PORT=process.env.PORT || 4000
 const connection = mysql.createConnection({
     host: 'sql12.freemysqlhosting.net',
     port: '3306',
@@ -40,7 +40,7 @@ app.post('/login',(req,res)=>{
     let password=req.body.password;
     console.log("hello "+email+" "+password);
     connection.query(sql,[email,password],(err,result)=>{
-        if( result.length>=1)
+        if( result!=null && result.length>=1)
             res.send("success");
         else    
             res.send("failure");
