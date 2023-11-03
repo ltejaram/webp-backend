@@ -3,7 +3,7 @@ const app=express();
 const mysql = require('mysql')
 const cors=require("cors")
 app.use(express.json());
-app.use(cors())
+app.use(cors({origin:"*"}))
 const PORT=process.env.PORT || 4000
 const connection = mysql.createConnection({
     host: 'sql12.freemysqlhosting.net',
