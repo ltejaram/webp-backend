@@ -3,7 +3,7 @@ const app=express();
 const mysql = require('mysql')
 const cors=require("cors")
 app.use(express.json());
-app.use(cors({origin:"*"}))
+app.use(cors())
 const PORT=process.env.PORT || 4000
 const connection = mysql.createConnection({
     host: 'sql12.freemysqlhosting.net',
@@ -109,6 +109,6 @@ app.post("/more-info-driver",(req,res)=>{
         res.send("error");
     }
 } )
-app.listen(PORT,()=>{
+app.listen(process.env.PORT || 4000,()=>{
     console.log("server started ");
 })
